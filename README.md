@@ -275,3 +275,30 @@ request_date
 last_updated
 created_at
 updated_at
+
+
+Core Dependencies:
+
+- spring-boot-starter-web           // For building web applications including RESTful APIs
+- spring-boot-starter-data-jpa      // For JPA and Hibernate support
+- mysql-connector-java              // MySQL database connector
+- lombok                           // To reduce boilerplate code
+Security Dependencies:
+
+- spring-boot-starter-security     // For authentication and authorization
+- jjwt-api                        // For JWT token handling
+- jjwt-impl                       // JWT implementation
+- jjwt-jackson                    // JWT JSON serialization
+Validation & Documentation:
+
+- spring-boot-starter-validation   // For input validation
+- springdoc-openapi-starter-webmvc-ui  // For Swagger/OpenAPI documentation
+Testing Dependencies:
+
+- spring-boot-starter-test        // For unit and integration testing
+- h2database                      // In-memory database for testing
+Additional Useful Dependencies:
+
+- commons-lang3                   // Apache Commons utilities
+- modelmapper                     // For object mapping between DTOs and entities
+- spring-boot-starter-actuator    // For monitoring and metrics
