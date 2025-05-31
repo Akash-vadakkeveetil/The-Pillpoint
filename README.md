@@ -19,12 +19,6 @@ These where the main reasons which paved for the development of this project
 - The main problem which arises is when the hospitals do not make the order of an adequate amount of medicine for them , that is inorder to save money the do not order every medicine and if medicines are not relevant at a current time for example chicken pox , dengue fever etc , they are not gonna order it until a case gets reported on their hospitals .
 - So what our software does is , we are gonnna keep track of each and every medicine in a pharmcacy of each and every individual hospitals and then demand that there should a threshold amount or minimum amount of medicine requeired in a hospital , we can make that mandatory . And whenever the amount of medicine goes below out of stock then a request will be sent automatically to their manufactures and can send confirmation order for their request . And in case if any hospital doesnot accpet the confirmation order or refuese to keep the particular amount in their inventory then strict actions will be taken from the govt side . That is we can make this even a criteria for maintaing the license of hopstials . 
 
-#### Block diagram
-![BlockDiagram](IMG/blockdiagram0.png)
-
-#### Use case diagram
-![USE-CASE](IMG/Usecase.png)
-
 ## 🩺 PillPoint – Centralized Medicine Stock Monitoring System
 
 ### 💡 Concept
@@ -85,89 +79,45 @@ These where the main reasons which paved for the development of this project
 ### Microservice Modules
 - Hospital service module - create/update/delete/view list of all hospitals
 
+
 pillpoint-backend/
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   └── com/
-│   │   │       └── pillpoint/
-│   │   │           ├── PillPointApplication.java
-│   │   │           ├── config/
-│   │   │           │   ├── SecurityConfig.java
-│   │   │           │   ├── JwtConfig.java
-│   │   │           │   └── WebConfig.java
-│   │   │           ├── controller/
-│   │   │           │   ├── AuthController.java
-│   │   │           │   ├── HospitalController.java
-│   │   │           │   ├── SupplierController.java
-│   │   │           │   ├── MedicineController.java
-│   │   │           │   ├── InventoryController.java
-│   │   │           │   ├── OrderController.java
-│   │   │           │   └── ReportController.java
-│   │   │           ├── model/
-│   │   │           │   ├── User.java
-│   │   │           │   ├── Hospital.java
-│   │   │           │   ├── Supplier.java
-│   │   │           │   ├── Medicine.java
-│   │   │           │   ├── Inventory.java
-│   │   │           │   └── Order.java
-│   │   │           ├── repository/
-│   │   │           │   ├── UserRepository.java
-│   │   │           │   ├── HospitalRepository.java
-│   │   │           │   ├── SupplierRepository.java
-│   │   │           │   ├── MedicineRepository.java
-│   │   │           │   ├── InventoryRepository.java
-│   │   │           │   └── OrderRepository.java
-│   │   │           ├── service/
-│   │   │           │   ├── AuthService.java
-│   │   │           │   ├── HospitalService.java
-│   │   │           │   ├── SupplierService.java
-│   │   │           │   ├── MedicineService.java
-│   │   │           │   ├── InventoryService.java
-│   │   │           │   ├── OrderService.java
-│   │   │           │   └── ReportService.java
-│   │   │           ├── dto/
-│   │   │           │   ├── request/
-│   │   │           │   │   ├── LoginRequest.java
-│   │   │           │   │   ├── RegisterRequest.java
-│   │   │           │   │   ├── HospitalRequest.java
-│   │   │           │   │   ├── SupplierRequest.java
-│   │   │           │   │   ├── MedicineRequest.java
-│   │   │           │   │   ├── InventoryRequest.java
-│   │   │           │   │   └── OrderRequest.java
-│   │   │           │   └── response/
-│   │   │           │       ├── AuthResponse.java
-│   │   │           │       ├── HospitalResponse.java
-│   │   │           │       ├── SupplierResponse.java
-│   │   │           │       ├── MedicineResponse.java
-│   │   │           │       ├── InventoryResponse.java
-│   │   │           │       ├── OrderResponse.java
-│   │   │           │       └── ReportResponse.java
-│   │   │           ├── exception/
-│   │   │           │   ├── GlobalExceptionHandler.java
-│   │   │           │   ├── ResourceNotFoundException.java
-│   │   │           │   ├── UnauthorizedException.java
-│   │   │           │   └── BadRequestException.java
-│   │   │           └── util/
-│   │   │               ├── JwtUtil.java
-│   │   │               └── PasswordUtil.java
-│   │   └── resources/
-│   │       ├── application.properties
-│   │       ├── application-dev.properties
-│   │       └── application-prod.properties
-│   └── test/
-│       └── java/
-│           └── com/
-│               └── pillpoint/
-│                   ├── controller/
-│                   ├── service/
-│                   └── repository/
+├── src/main/java/com/pillpoint/
+│   ├── PillpointApplication.java
+│   ├── controller/
+│   │   ├── AuthController.java
+│   │   ├── HospitalController.java
+│   │   ├── SupplierController.java
+│   │   ├── MedicineController.java
+│   │   ├── InventoryController.java
+│   │   ├── OrderController.java
+│   │   └── ReportController.java
+│   ├── model/
+│   │   ├── User.java
+│   │   ├── Hospital.java
+│   │   ├── Supplier.java
+│   │   ├── Medicine.java
+│   │   ├── Inventory.java
+│   │   └── Order.java
+│   ├── repository/
+│   ├── service/
+│   ├── config/
+│   └── dto/
+├── src/main/resources/
+│   ├── application.properties
+│   └── schema.sql
 └── pom.xml
 
 
+### Key Dependencies needed:
 
+Spring Boot Starter Web
+Spring Boot Starter Data JPA
+Spring Boot Starter Security
+MySQL Connector
+JWT libraries
 
-API Endpoints Plan
+### API Endpoints Plan
+
 Authentication
 POST /api/auth/register - Register a new user
 POST /api/auth/login - Login and get JWT token
@@ -275,30 +225,3 @@ request_date
 last_updated
 created_at
 updated_at
-
-
-Core Dependencies:
-
-- spring-boot-starter-web           // For building web applications including RESTful APIs
-- spring-boot-starter-data-jpa      // For JPA and Hibernate support
-- mysql-connector-java              // MySQL database connector
-- lombok                           // To reduce boilerplate code
-Security Dependencies:
-
-- spring-boot-starter-security     // For authentication and authorization
-- jjwt-api                        // For JWT token handling
-- jjwt-impl                       // JWT implementation
-- jjwt-jackson                    // JWT JSON serialization
-Validation & Documentation:
-
-- spring-boot-starter-validation   // For input validation
-- springdoc-openapi-starter-webmvc-ui  // For Swagger/OpenAPI documentation
-Testing Dependencies:
-
-- spring-boot-starter-test        // For unit and integration testing
-- h2database                      // In-memory database for testing
-Additional Useful Dependencies:
-
-- commons-lang3                   // Apache Commons utilities
-- modelmapper                     // For object mapping between DTOs and entities
-- spring-boot-starter-actuator    // For monitoring and metrics
