@@ -25,8 +25,8 @@
 **Request Body:**
 ```json
 {
-  "username": "admin",
-  "password": "password"
+  "username": "testadmin",
+  "password": "password123"
 }
 ```
 ✅ **Save the JWT token** from the response for all protected endpoints.
