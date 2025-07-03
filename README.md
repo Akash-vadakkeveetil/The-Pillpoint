@@ -122,24 +122,28 @@ Authentication
 POST /api/auth/register - Register a new user
 POST /api/auth/login - Login and get JWT token
 GET /api/auth/me - Get current user info
+
 Hospitals
 GET /api/hospitals - Get all hospitals
 GET /api/hospitals/{id} - Get hospital by ID
 POST /api/hospitals - Create new hospital
 PUT /api/hospitals/{id} - Update hospital
 DELETE /api/hospitals/{id} - Delete hospital
+
 Suppliers
 GET /api/suppliers - Get all suppliers
 GET /api/suppliers/{id} - Get supplier by ID
 POST /api/suppliers - Create new supplier
 PUT /api/suppliers/{id} - Update supplier
 DELETE /api/suppliers/{id} - Delete supplier
+
 Medicines
 GET /api/medicines - Get all medicines
 GET /api/medicines/{id} - Get medicine by ID
 POST /api/medicines - Create new medicine
 PUT /api/medicines/{id} - Update medicine
 DELETE /api/medicines/{id} - Delete medicine
+
 Inventory
 GET /api/inventory - Get all inventory items
 GET /api/inventory/hospital/{hospitalId} - Get inventory by hospital
@@ -147,6 +151,7 @@ GET /api/inventory/low-stock - Get low stock items
 POST /api/inventory - Add inventory item
 PUT /api/inventory/{id} - Update inventory
 DELETE /api/inventory/{id} - Delete inventory item
+
 Orders
 GET /api/orders - Get all orders
 GET /api/orders/{id} - Get order by ID
@@ -155,73 +160,10 @@ GET /api/orders/supplier/{supplierId} - Get orders by supplier
 POST /api/orders - Create new order
 PUT /api/orders/{id}/status - Update order status
 DELETE /api/orders/{id} - Delete order
+
 Reports
 GET /api/reports/dashboard - Get dashboard stats
 GET /api/reports/inventory - Get inventory reports
 GET /api/reports/orders - Get order reports
 
-Database Schema
 
-Users Table
-id (PK)
-name
-email (unique)
-password (hashed)
-role (ADMIN, HOSPITAL, SUPPLIER)
-created_at
-updated_at
-
-Hospitals Table
-id (PK)
-name
-location
-license_number
-contact_info
-email (unique)
-user_id (FK to Users)
-created_at
-updated_at
-
-Suppliers Table
-id (PK)
-name
-contact_person
-contact_info
-email (unique)
-address
-user_id (FK to Users)
-created_at
-updated_at
-
-Medicines Table
-id (PK)
-name
-description
-threshold_quantity
-unit
-created_at
-updated_at
-
-Inventory Table
-id (PK)
-medicine_id (FK to Medicines)
-hospital_id (FK to Hospitals)
-quantity
-expiry_date
-batch_number
-supplier_id (FK to Suppliers)
-last_updated
-created_at
-updated_at
-
-Orders Table
-id (PK)
-medicine_id (FK to Medicines)
-hospital_id (FK to Hospitals)
-supplier_id (FK to Suppliers)
-requested_quantity
-status (PENDING, CONFIRMED, DECLINED, DELIVERED)
-request_date
-last_updated
-created_at
-updated_at
